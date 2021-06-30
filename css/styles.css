@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700&display=swap');
 
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
     height: 100vh;
+    width: 100%;
     background-image: url("../resources/img/background-1.jpg");
     background-size: cover;
     background-position: center;
@@ -14,8 +16,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Oswald',
-        sans-serif;
+    font-family: 'Passion One',
+        cursive;
+
 }
 
 .container {
@@ -44,20 +47,26 @@ body {
 }
 
 .title {
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100vw;
-    font-size: 40px;
+    font-size: 200%;
     text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .btn-neon {
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     position: relative;
     display: inline-block;
     padding: 15px 30px;
     color: black;
-    font-size: 24px;
+    font-size: 175%;
+    font-weight: 400;
     text-decoration: none;
     overflow: hidden;
     transition: 0.2s;
@@ -133,4 +142,224 @@ body {
     bottom: 100%;
     transition: 1s;
     transition-delay: .75s;
+}
+
+/*stars effect*/
+.stars {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    top: 0;
+}
+
+.star {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotateZ(45deg);
+}
+
+.star span {
+    width: 170px;
+    height: 2px;
+    display: block;
+    background-image: linear-gradient(to right, #fff, transparent);
+    opacity: 0;
+    margin-bottom: 150px;
+    position: relative;
+    animation: shooting 2s linear infinite;
+    opacity: 0;
+    filter: drop-shadow(0 0 6px rgb(122, 168, 255));
+
+}
+
+.star:nth-child(2) {
+    right: 30px;
+}
+
+.star:nth-child(2) span {
+    animation-delay: 1s;
+}
+
+.star:nth-child(3) {
+    right: 450px;
+}
+
+.star:nth-child(3) span {
+    animation-delay: 3s;
+}
+
+.star:nth-child(4) {
+    right: -150px;
+}
+
+.star:nth-child(4) span {
+    animation-delay: 2s;
+}
+
+.star:nth-child(5) {
+    right: -350px;
+}
+
+.star:nth-child(5) span {
+    animation-delay: 2s;
+}
+
+.star:nth-child(6) {
+    right: 550px;
+}
+
+.star:nth-child(6) span {
+    animation-delay: 4s;
+}
+
+.star:nth-child(7) {
+    right: 50px;
+}
+
+.star:nth-child(7) span {
+    animation-delay: 4s;
+}
+
+.star:nth-child(8) {
+    right: 750px;
+}
+
+.star:nth-child(8) span {
+    animation-delay: 5s;
+}
+
+.star:nth-child(9) {
+    right: -450px;
+}
+
+.star:nth-child(9) span {
+    animation-delay: 5s;
+}
+
+.star:nth-child(10) {
+    right: 250px;
+}
+
+.star:nth-child(10) span {
+    animation-delay: 4s;
+}
+
+
+.start span::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 6px #fff;
+    border-radius: 50px;
+
+}
+
+@keyframes shooting {
+    0% {
+        transform: translateY(-200px) rotate(-90deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(600px) rotate(-90deg);
+        opacity: 0;
+    }
+}
+
+/* QUIZZ */
+
+:root {
+    --hue-neutral: 248;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body.correct {
+    --hue: var(--hue-correct);
+}
+
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+
+/* .container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+} */
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    --hue: var(--hue-neutral);
+    font-family: 'Passion One',
+        cursive;
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+    font-size: 2.1rem;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.start-btn,
+.next-btn {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#question {
+    font-size: 2.1rem;
+}
+
+#question-container {
+    flex-grow: 2;
+    max-width: 85%;
 }
